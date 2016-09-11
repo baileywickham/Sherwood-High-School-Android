@@ -8,6 +8,7 @@ import android.app.Dialog
 import android.app.Fragment
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
+import com.bluelinelabs.conductor.Controller
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import android.support.v4.app.Fragment as SupportFragment
@@ -24,6 +25,8 @@ public fun <V : View> SupportFragment.bindView(id: Int)
         : ReadOnlyProperty<SupportFragment, V> = required(id, viewFinder)
 public fun <V : View> ViewHolder.bindView(id: Int)
         : ReadOnlyProperty<ViewHolder, V> = required(id, viewFinder)
+public fun <V : View> Controller.bindView(id: Int)
+        : ReadOnlyProperty<Controller, V> = required(id, viewFinder)
 
 public fun <V : View> View.bindOptionalView(id: Int)
         : ReadOnlyProperty<View, V?> = optional(id, viewFinder)
@@ -76,6 +79,8 @@ private val SupportFragment.viewFinder: SupportFragment.(Int) -> View?
     get() = { view!!.findViewById(it) }
 private val ViewHolder.viewFinder: ViewHolder.(Int) -> View?
     get() = { itemView.findViewById(it) }
+private val Controller.viewFinder: Controller.(Int) -> View?
+    get() = { view.findViewById(it) }
 
 private fun viewNotFound(id:Int, desc: KProperty<*>): Nothing =
         throw IllegalStateException("View ID $id for '${desc.name}' not found.")
