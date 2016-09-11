@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.bradypierce.sherwoodhighschool"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -30,4 +30,5 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     compile 'com.roughike:bottom-bar:2.0.2'
+    compile 'com.bluelinelabs:conductor:2.0.1'
 }
