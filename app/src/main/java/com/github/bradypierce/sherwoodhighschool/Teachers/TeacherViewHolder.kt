@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher
+import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 

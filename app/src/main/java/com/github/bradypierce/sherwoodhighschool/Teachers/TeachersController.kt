@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bluelinelabs.conductor.Controller
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher
+import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 
@@ -29,19 +29,11 @@ class TeachersController: Controller(), ITeacher.View {
 
     override fun onAttach(view: View) {
         super.onAttach(view)
-        var teachers = listOf(
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""),
-                Teacher("Samantha Allen", "Science", "", ""))
-
-
         recyclerTeacher.layoutManager = LinearLayoutManager(view.context)
+        presenter.loadTeachers()
+    }
+
+    override fun showTeachers(teachers: List<Teacher>?) {
         recyclerTeacher.adapter = TeacherAdapter(teachers)
     }
 
