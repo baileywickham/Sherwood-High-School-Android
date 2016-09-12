@@ -1,14 +1,18 @@
 package com.github.bradypierce.sherwoodhighschool.Teachers
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
+import com.github.bradypierce.sherwoodhighschool.Utils.cleanPhoneNumber
 
 /**
  * Created by bradypierce on 9/11/16.
@@ -31,11 +35,16 @@ class TeacherViewHolder(view: View, context: Context): RecyclerView.ViewHolder(v
         popupMenu.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.teacher_overflow_email -> {
-
+                    val intent = Intent(Intent.ACTION_SENDTO)
+                    intent.type = "text/plain"
+                    intent.putExtra(Intent.EXTRA_EMAIL, teacher.email)
+                    context.startActivity(Intent.createChooser(intent, "Send Email"))
                     return@setOnMenuItemClickListener true
                 }
                 R.id.teacher_overflow_phone -> {
-
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:${teacher.phone?.cleanPhoneNumber()}")
+                    context.startActivity(intent)
                     return@setOnMenuItemClickListener true
                 }
                 else -> {
