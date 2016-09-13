@@ -1,6 +1,7 @@
 package com.github.bradypierce.sherwoodhighschool.Model.Teacher
 
 import android.util.Log
+import com.github.bradypierce.sherwoodhighschool.Model.Realm.RealmInteractor
 import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
@@ -20,6 +21,7 @@ import retrofit2.http.Path
 
 class TeacherInteractor {
 
+    val realmInteractor = RealmInteractor()
     val baseUrl = "https://spreadsheets.google.com/"
     val requestKey = "1lq_kGuL4rgJDoAi6ZfTBMgIjktV82rKEMwDsStZirXg"
 
@@ -47,6 +49,7 @@ class TeacherInteractor {
         teacherService.getTeachers(requestKey).enqueue(object : Callback<TeacherRequest> {
             override fun onResponse(call: Call<TeacherRequest>?, response: Response<TeacherRequest>?) {
                 var teachers = response?.body()?.feed?.teachers
+                realmInteractor.writeList(teachers)
                 callback.onSuccess(teachers)
             }
 

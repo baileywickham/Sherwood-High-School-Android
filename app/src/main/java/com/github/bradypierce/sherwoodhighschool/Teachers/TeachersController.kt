@@ -23,13 +23,13 @@ class TeachersController: Controller(), ITeacher.View {
     lateinit var presenter: ITeacher.Presenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        presenter = TeacherPresenter(this)
         val view: View = inflater.inflate(R.layout.controller_teacher, container, false)
         return view
     }
 
     override fun onAttach(view: View) {
         super.onAttach(view)
+        presenter = TeacherPresenter(this)
         recyclerTeacher.layoutManager = LinearLayoutManager(view.context)
         presenter.loadTeachers()
     }
