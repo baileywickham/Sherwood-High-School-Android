@@ -1,6 +1,6 @@
-package com.github.bradypierce.sherwoodhighschool.Model.Realm
+package com.github.bradypierce.sherwoodhighschool.Model.Interactor
 
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
+import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
 import io.realm.Realm
 import io.realm.RealmObject
 

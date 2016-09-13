@@ -1,8 +1,8 @@
-package com.github.bradypierce.sherwoodhighschool.Model.Teacher
+package com.github.bradypierce.sherwoodhighschool.Teachers.Interactor
 
 import android.util.Log
-import com.github.bradypierce.sherwoodhighschool.Model.Realm.RealmInteractor
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
+import com.github.bradypierce.sherwoodhighschool.Model.Interactor.RealmInteractor
+import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder

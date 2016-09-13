@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bluelinelabs.conductor.Controller
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
+import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 

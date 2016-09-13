@@ -1,4 +1,4 @@
-package com.github.bradypierce.sherwoodhighschool.Model.Teacher
+package com.github.bradypierce.sherwoodhighschool.Teachers.Interactor
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

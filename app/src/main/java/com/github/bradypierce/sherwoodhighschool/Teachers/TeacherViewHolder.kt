@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
+import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 import com.github.bradypierce.sherwoodhighschool.Utils.cleanPhoneNumber
@@ -36,8 +36,7 @@ class TeacherViewHolder(view: View, context: Context): RecyclerView.ViewHolder(v
             when(it.itemId) {
                 R.id.teacher_overflow_email -> {
                     val intent = Intent(Intent.ACTION_SENDTO)
-                    intent.type = "text/plain"
-                    intent.putExtra(Intent.EXTRA_EMAIL, teacher.email)
+                    intent.data = Uri.parse("mailto:${teacher.email}")
                     context.startActivity(Intent.createChooser(intent, "Send Email"))
                     return@setOnMenuItemClickListener true
                 }

@@ -1,8 +1,8 @@
 package com.github.bradypierce.sherwoodhighschool.Teachers
 
 import android.util.Log
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher.TeacherInteractor
-import com.github.bradypierce.sherwoodhighschool.Model.Teacher.Teacher
+import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.TeacherInteractor
+import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
 import io.realm.Realm
 import io.realm.RealmResults
 import java.util.*
