@@ -1,6 +1,6 @@
 package com.github.bradypierce.sherwoodhighschool.Teachers
 
-import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
+import com.github.bradypierce.sherwoodhighschool.Model.Teacher
 
 /**
  * Created by bradypierce on 9/10/16.

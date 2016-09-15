@@ -1,4 +1,4 @@
-package com.github.bradypierce.sherwoodhighschool.Teachers.Interactor
+package com.github.bradypierce.sherwoodhighschool.Model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -7,8 +7,24 @@ import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 
 /**
- * Created by bradypierce on 9/11/16.
+ * Created by bradypierce on 9/14/16.
  */
+
+open class TeacherRequest {
+
+    @SerializedName("feed")
+    @Expose
+    open var feed: Feed? = null
+
+}
+
+open class Feed {
+
+    @SerializedName("entry")
+    @Expose
+    open var teachers: List<Teacher>? = null
+
+}
 
 @RealmClass
 open class Teacher: RealmObject() {

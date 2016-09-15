@@ -1,5 +1,6 @@
 package com.github.bradypierce.sherwoodhighschool.Teachers.Interactor
 
+import com.github.bradypierce.sherwoodhighschool.Model.Teacher
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement

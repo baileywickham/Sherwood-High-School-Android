@@ -1,51 +1,26 @@
 package com.github.bradypierce.sherwoodhighschool.Teachers.Interactor
 
 import android.util.Log
+import com.github.bradypierce.sherwoodhighschool.Model.Interactor.NetworkInteractor
 import com.github.bradypierce.sherwoodhighschool.Model.Interactor.RealmInteractor
-import com.github.bradypierce.sherwoodhighschool.Teachers.Interactor.Teacher
-import com.google.gson.ExclusionStrategy
-import com.google.gson.FieldAttributes
-import com.google.gson.GsonBuilder
-import io.realm.RealmObject
+import com.github.bradypierce.sherwoodhighschool.Model.TeacherRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
 
 /**
  * Created by bradypierce on 9/11/16.
  */
 
-class TeacherInteractor {
+class TeacherInteractor: NetworkInteractor("https://spreadsheets.google.com/") {
 
-    val realmInteractor = RealmInteractor()
-    val baseUrl = "https://spreadsheets.google.com/"
     val requestKey = "1lq_kGuL4rgJDoAi6ZfTBMgIjktV82rKEMwDsStZirXg"
+    val realmInteractor = RealmInteractor()
 
-    val gson = GsonBuilder()
-            .registerTypeAdapter(Teacher::class.java, TeacherDeserializer())
-            .setExclusionStrategies(object : ExclusionStrategy {
-        override fun shouldSkipField(f: FieldAttributes?): Boolean {
-            return f?.declaredClass == RealmObject::class.java
-        }
+    val teacherService: ITeacherNetwork.TeacherService = retrofit.create(
+            ITeacherNetwork.TeacherService::class.java)
 
-        override fun shouldSkipClass(clazz: Class<*>?): Boolean {
-            return false
-        }
-    }).create()
-
-    val retrofit: Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .baseUrl(baseUrl)
-        .build()
-
-    val teacherService: TeacherService = retrofit.create(
-            TeacherService::class.java)
-
-    fun retrieveTeachers(callback: TeacherCallback) {
+    fun retrieveTeachers(callback: ITeacherNetwork.TeacherCallback) {
         teacherService.getTeachers(requestKey).enqueue(object : Callback<TeacherRequest> {
             override fun onResponse(call: Call<TeacherRequest>?, response: Response<TeacherRequest>?) {
                 var teachers = response?.body()?.feed?.teachers
@@ -58,21 +33,6 @@ class TeacherInteractor {
                 t?.printStackTrace()
             }
         })
-    }
-
-    interface TeacherService {
-
-        @GET("feeds/list/{key}/2/public/full?alt=json")
-        fun getTeachers(@Path("key") key: String): Call<TeacherRequest>
-
-    }
-
-    interface TeacherCallback {
-
-        fun onSuccess(teachers: List<Teacher>?)
-
-        fun onFailure(error: Throwable)
-
     }
 
 }
