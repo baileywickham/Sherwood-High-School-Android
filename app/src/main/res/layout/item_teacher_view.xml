@@ -1,45 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="72dp">
+    android:layout_height="72dp" >
 
-    <RelativeLayout
+    <TextView
+        android:text="Jeff Stirling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/item_teacher_name"
+        app:layout_constraintBottom_toTopOf="@+id/item_teacher_position"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:text="Social Studies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_teacher_position"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true">
-
-        <TextView
-            android:id="@+id/item_teacher_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:id="@+id/item_teacher_position"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/item_teacher_name"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="14sp"/>
-
-    </RelativeLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/colorSecondaryText" />
 
     <ImageButton
-        android:id="@+id/item_teacher_overflow"
         android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_more_vert_grey_600_24dp"
+        android:id="@+id/item_teacher_overflow"
+        android:elevation="0dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_more_vert_grey_600_24dp"/>
-
-
-</RelativeLayout>
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
