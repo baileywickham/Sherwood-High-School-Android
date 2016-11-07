@@ -3,15 +3,20 @@ package com.github.bradypierce.sherwoodhighschool.Teachers
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.support.customtabs.CustomTabsIntent
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import com.bluelinelabs.conductor.Conductor
+import com.github.bradypierce.sherwoodhighschool.Maincontainer.ContainerActivity
 import com.github.bradypierce.sherwoodhighschool.Model.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 import com.github.bradypierce.sherwoodhighschool.Utils.cleanPhoneNumber
+import com.github.bradypierce.sherwoodhighschool.Utils.websiteUrl
 
 /**
  * Created by bradypierce on 9/11/16.
@@ -41,8 +46,15 @@ class TeacherViewHolder(view: View, context: Context): RecyclerView.ViewHolder(v
                 }
                 R.id.teacher_overflow_phone -> {
                     val intent = Intent(Intent.ACTION_DIAL)
-                    intent.data = Uri.parse("tel:${teacher.phone?.cleanPhoneNumber()}")
+                    intent.data = Uri.parse("tel:${teacher.cleanPhoneNumber()}")
                     context.startActivity(intent)
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.teacher_overflow_website -> {
+                    val intent = CustomTabsIntent.Builder()
+                        .setToolbarColor(R.color.colorPrimary).build()
+                    //TODO chrome custom tab
+                    //intent.launchUrl(context, Uri.parse(teacher.websiteUrl()))
                     return@setOnMenuItemClickListener true
                 }
                 else -> {

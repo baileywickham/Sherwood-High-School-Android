@@ -1,6 +1,8 @@
 package com.github.bradypierce.sherwoodhighschool.Maincontainer
 
+import android.net.Uri
 import android.os.Bundle
+import android.support.customtabs.CustomTabsIntent
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.view.View
@@ -55,6 +57,13 @@ class ContainerActivity : AppCompatActivity() {
         }
     }
 
+    fun openCustomTab(url: String) {
+        var builder = CustomTabsIntent.Builder()
+        builder.setToolbarColor(R.color.colorPrimary)
+        var customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this, Uri.parse(url))
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
@@ -72,6 +81,10 @@ class ContainerActivity : AppCompatActivity() {
         if (!router.handleBack()) {
             super.onBackPressed()
         }
+    }
+
+    companion object {
+
     }
 
 }
