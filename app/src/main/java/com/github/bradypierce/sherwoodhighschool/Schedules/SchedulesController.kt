@@ -21,7 +21,6 @@ class SchedulesController: Controller() {
     val fReference = fDatabase.getReference("Schedules")
 
     //TODO implement schedule request
-    //https://spreadsheets.google.com/feeds/list/1-1XObZ7YTYriclkqBcsfw7u8JjgkhKsYOeWdZ5n8AaA/1/public/full?alt=json
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view: View = inflater.inflate(R.layout.controller_schedule, container, false)
@@ -44,10 +43,15 @@ class SchedulesController: Controller() {
     fun retrieveData() {
         fReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(data: DataSnapshot?) {
-                val type = object : GenericTypeIndicator<List<Schedule>>() {}
-                var schedules = data?.getValue(type)
-
-                Log.i("SchedulesController", "Schedules ${schedules?.count()}")
+                data?.children?.forEach {
+                    var schedule = it.getValue(object : GenericTypeIndicator<HashMap<String, Object>>() {})
+                    Log.i("SchedulesController", "Schedule Name: ${schedule.get("name")}")
+                    var classes = schedule.get("classes") as List<HashMap<String, String>>
+                    classes.forEach {
+                        Log.i("SchedulesController", "Period: ${it.get("period")}")
+                        Log.i("SchedulesController", "Time: ${it.get("time")}")
+                    }
+                }
             }
 
             override fun onCancelled(error: DatabaseError?) {
