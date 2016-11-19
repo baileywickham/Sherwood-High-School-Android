@@ -6,17 +6,13 @@ import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import com.bluelinelabs.conductor.Conductor
-import com.github.bradypierce.sherwoodhighschool.Maincontainer.ContainerActivity
 import com.github.bradypierce.sherwoodhighschool.Model.Teacher
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 import com.github.bradypierce.sherwoodhighschool.Utils.cleanPhoneNumber
-import com.github.bradypierce.sherwoodhighschool.Utils.websiteUrl
 
 /**
  * Created by bradypierce on 9/11/16.

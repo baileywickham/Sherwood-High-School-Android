@@ -9,12 +9,6 @@ import android.widget.TextView
 import com.bluelinelabs.conductor.Controller
 import com.github.bradypierce.sherwoodhighschool.R
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
-import com.google.android.gms.vision.CameraSource
-import com.google.android.gms.vision.Detector
-import com.google.android.gms.vision.Frame
-import com.google.android.gms.vision.barcode.Barcode
-import com.google.android.gms.vision.barcode.BarcodeDetector
-import java.io.IOException
 
 /**
  * Created by bradypierce on 9/10/16.
