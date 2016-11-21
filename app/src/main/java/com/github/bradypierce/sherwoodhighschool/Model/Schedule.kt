@@ -1,9 +1,5 @@
 package com.github.bradypierce.sherwoodhighschool.Model
 
-import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
-import io.realm.annotations.RealmClass
-
 /**
  * Created by bradypierce on 11/6/16.
  */
