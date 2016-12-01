@@ -49,10 +49,10 @@ class ContainerActivity : AppCompatActivity() {
 
         bottomBar.setOnTabSelectListener {
             when (it) {
-                R.id.tab_homescreen -> router.pushController(RouterTransaction.with(HomescreenController()))
+                //R.id.tab_homescreen -> router.pushController(RouterTransaction.with(HomescreenController()))
                 R.id.tab_teachers   -> router.pushController(RouterTransaction.with(TeachersController()))
                 R.id.tab_schedules  -> router.pushController(RouterTransaction.with(SchedulesController()))
-                R.id.tab_student    -> router.pushController(RouterTransaction.with(StudentController()))
+                //R.id.tab_student    -> router.pushController(RouterTransaction.with(StudentController()))
             }
         }
     }
@@ -81,10 +81,6 @@ class ContainerActivity : AppCompatActivity() {
         if (!router.handleBack()) {
             super.onBackPressed()
         }
-    }
-
-    companion object {
-
     }
 
 }

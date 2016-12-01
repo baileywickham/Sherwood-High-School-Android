@@ -8,7 +8,7 @@ import com.github.bradypierce.sherwoodhighschool.Model.Teacher
 interface ITeacher {
 
     interface View {
-        fun showMessage(message: String)
+        fun showMessage(message: String?)
 
         fun showTeachers(teachers: List<Teacher>?)
     }

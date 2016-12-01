@@ -1,11 +1,13 @@
 package com.github.bradypierce.sherwoodhighschool.Model
 
+import java.io.Serializable
+
 /**
  * Created by bradypierce on 11/6/16.
  */
 
 
-class Schedule() {
+class Schedule() : Serializable {
 
     var name: String? = null
 
@@ -18,7 +20,7 @@ class Schedule() {
 
 }
 
-open class SchoolClass() {
+open class SchoolClass() : Serializable {
 
     open var period: String? = null
     open var time: String? = null

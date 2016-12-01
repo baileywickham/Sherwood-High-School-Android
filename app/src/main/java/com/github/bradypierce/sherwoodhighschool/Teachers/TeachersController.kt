@@ -38,7 +38,7 @@ class TeachersController: Controller(), ITeacher.View {
         recyclerTeacher.adapter = TeacherAdapter(teachers)
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 

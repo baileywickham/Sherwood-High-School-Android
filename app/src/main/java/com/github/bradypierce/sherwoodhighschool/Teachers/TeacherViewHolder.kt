@@ -46,13 +46,13 @@ class TeacherViewHolder(view: View, context: Context): RecyclerView.ViewHolder(v
                     context.startActivity(intent)
                     return@setOnMenuItemClickListener true
                 }
-                R.id.teacher_overflow_website -> {
+                /*R.id.teacher_overflow_website -> {
                     val intent = CustomTabsIntent.Builder()
                         .setToolbarColor(R.color.colorPrimary).build()
                     //TODO chrome custom tab
                     //intent.launchUrl(context, Uri.parse(teacher.websiteUrl()))
                     return@setOnMenuItemClickListener true
-                }
+                }*/
                 else -> {
                     return@setOnMenuItemClickListener false
                 }

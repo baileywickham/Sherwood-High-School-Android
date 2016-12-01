@@ -2,6 +2,7 @@ package com.github.bradypierce.sherwoodhighschool.Model.Interactor
 
 import com.github.bradypierce.sherwoodhighschool.Model.Schedule
 import com.github.bradypierce.sherwoodhighschool.Model.SchoolClass
+import com.github.bradypierce.sherwoodhighschool.Model.Teacher
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.GenericTypeIndicator
 import java.util.*
@@ -27,6 +28,15 @@ class FirebaseInteractor() {
         }
 
         return schedules
+    }
+
+    fun decodeTeachers(data: DataSnapshot?): List<Teacher>? {
+        val teachers = ArrayList<Teacher>()
+        data?.children?.forEach {
+            val teacher = it.getValue(Teacher::class.java)
+            teachers.add(teacher)
+        }
+        return teachers
     }
 
 }

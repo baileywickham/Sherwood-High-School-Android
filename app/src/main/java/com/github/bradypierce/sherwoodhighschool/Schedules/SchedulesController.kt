@@ -1,14 +1,19 @@
 package com.github.bradypierce.sherwoodhighschool.Schedules
 
+import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bluelinelabs.conductor.Controller
+import com.bluelinelabs.conductor.RouterTransaction
 import com.github.bradypierce.sherwoodhighschool.Model.Schedule
 import com.github.bradypierce.sherwoodhighschool.R
+import com.github.bradypierce.sherwoodhighschool.Schedules.Detail.ScheduleDetailController
 import com.github.bradypierce.sherwoodhighschool.Utils.bindView
 
 /**
@@ -34,7 +39,13 @@ class SchedulesController: Controller(), ISchedule.View {
     }
 
     override fun showSchedules(schedules: List<Schedule>?) {
-        recyclerSchedule.adapter = ScheduleAdapter(schedules)
+        recyclerSchedule.adapter = ScheduleAdapter(schedules) {
+            var intent = Intent(applicationContext, ScheduleDetailController::class.java)
+            var bundle = Bundle()
+            bundle.putSerializable("Schedule", it)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
     }
 
     override fun showMessage(message: String?) {

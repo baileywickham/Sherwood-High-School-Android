@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <tabs>
-    <tab
+    <!--<tab
         id="@+id/tab_homescreen"
         icon="@drawable/ic_home_black_24dp"
-        title="Home" />
+        title="Home" /> -->
 
     <tab
         id="@+id/tab_teachers"
@@ -16,8 +16,8 @@
         icon="@drawable/ic_class_black_24dp"
         title="Schedules" />
 
-    <tab
+    <!--<tab
         id="@+id/tab_student"
         icon="@drawable/ic_account_circle_black_24dp"
-        title="Id"/>
+        title="Id"/> -->
 </tabs>

@@ -8,7 +8,7 @@
         android:id="@+id/teacher_overflow_phone"
         android:title="Call"/>
 
-    <item
+    <!--<item
         android:id="@+id/teacher_overflow_website"
-        android:title="Website"/>
+        android:title="Website"/> -->
 </menu>

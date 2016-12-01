@@ -11,13 +11,14 @@ import com.github.bradypierce.sherwoodhighschool.R
  * Created by bradypierce on 11/18/16.
  */
 
-class ScheduleAdapter(schedules: List<Schedule>?) : RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleAdapter(schedules: List<Schedule>?, onClick: (schedule: Schedule) -> (Unit)) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     val schedules = schedules
+    val onClick = onClick
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ScheduleViewHolder {
         val view: View = LayoutInflater.from(parent?.context).inflate(R.layout.item_schedule_view, parent, false)
-        var viewHolder = ScheduleViewHolder(view, parent!!.context)
+        val viewHolder = ScheduleViewHolder(view, parent!!.context, onClick)
         return viewHolder
     }
 
