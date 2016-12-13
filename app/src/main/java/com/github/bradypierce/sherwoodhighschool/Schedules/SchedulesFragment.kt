@@ -2,45 +2,40 @@ package com.github.bradypierce.sherwoodhighschool.Schedules
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.bluelinelabs.conductor.Controller
-import com.bluelinelabs.conductor.RouterTransaction
 import com.github.bradypierce.sherwoodhighschool.Model.Schedule
 import com.github.bradypierce.sherwoodhighschool.R
-import com.github.bradypierce.sherwoodhighschool.Schedules.Detail.ScheduleDetailController
-import com.github.bradypierce.sherwoodhighschool.Utils.bindView
+import com.github.bradypierce.sherwoodhighschool.Schedules.Detail.ScheduleDetailActivity
+import kotlinx.android.synthetic.main.fragment_schedule.*
 
 /**
  * Created by bradypierce on 9/10/16.
  */
 
-class SchedulesController: Controller(), ISchedule.View {
-
-    val recyclerSchedule: RecyclerView by bindView(R.id.recycler_schedule_view)
+class SchedulesFragment() : Fragment(), ISchedule.View {
 
     lateinit var presenter: ISchedule.Presenter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        val view: View = inflater.inflate(R.layout.controller_schedule, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.fragment_schedule, container, false)
         return view
     }
 
-    override fun onAttach(view: View) {
-        super.onAttach(view)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         presenter = SchedulePresenter(this)
-        recyclerSchedule.layoutManager = LinearLayoutManager(view.context)
+        recycler_schedule_view.layoutManager = LinearLayoutManager(context)
         presenter.loadSchedules()
     }
 
     override fun showSchedules(schedules: List<Schedule>?) {
-        recyclerSchedule.adapter = ScheduleAdapter(schedules) {
-            var intent = Intent(applicationContext, ScheduleDetailController::class.java)
+        recycler_schedule_view.adapter = ScheduleAdapter(schedules) {
+            var intent = Intent(context, ScheduleDetailActivity::class.java)
             var bundle = Bundle()
             bundle.putSerializable("Schedule", it)
             intent.putExtras(bundle)

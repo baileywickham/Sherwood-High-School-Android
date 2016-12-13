@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Schedules.Detail.ScheduleDetailController"
+            android:name=".Schedules.Detail.ScheduleDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

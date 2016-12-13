@@ -3,20 +3,15 @@ package com.github.bradypierce.sherwoodhighschool.Schedules.Detail
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.github.bradypierce.sherwoodhighschool.Model.Schedule
 import com.github.bradypierce.sherwoodhighschool.R
-import com.github.bradypierce.sherwoodhighschool.Utils.bindView
+import kotlinx.android.synthetic.main.activity_detail_schedule.*
 
 /**
  * Created by bradypierce on 11/30/16.
  */
-class ScheduleDetailController() : AppCompatActivity() {
-
-    val toolbar: Toolbar by bindView(R.id.toolbar)
-    val recyclerView: RecyclerView by bindView(R.id.recycler_schedule_detail_view)
+class ScheduleDetailActivity() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +22,8 @@ class ScheduleDetailController() : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = ScheduleDetailAdapter(schedule.classes)
+        recycler_schedule_detail_view.layoutManager = LinearLayoutManager(this)
+        recycler_schedule_detail_view.adapter = ScheduleDetailAdapter(schedule.classes)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

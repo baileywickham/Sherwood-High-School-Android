@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.TextView
 import com.github.bradypierce.sherwoodhighschool.Model.Schedule
 import com.github.bradypierce.sherwoodhighschool.R
-import com.github.bradypierce.sherwoodhighschool.Utils.bindView
+import kotlinx.android.synthetic.main.item_schedule_view.view.*
 
 /**
  * Created by bradypierce on 11/18/16.
@@ -17,10 +17,9 @@ class ScheduleViewHolder(view: View, context: Context, onClick: (schedule: Sched
     val view = view
     val context = context
     val onClick = onClick
-    val scheduleName: TextView by bindView(R.id.item_schedule_name)
 
     fun bind(schdule: Schedule) {
-        scheduleName.text = schdule.name
+        itemView.item_schedule_name.text = schdule.name
         view.setOnClickListener {
             onClick(schdule)
         }
