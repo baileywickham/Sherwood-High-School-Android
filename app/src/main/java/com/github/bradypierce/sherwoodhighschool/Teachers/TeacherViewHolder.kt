@@ -15,16 +15,17 @@ import kotlinx.android.synthetic.main.item_teacher_view.view.*
  * Created by bradypierce on 9/11/16.
  */
 
-class TeacherViewHolder(view: View, context: Context): RecyclerView.ViewHolder(view) {
+class TeacherViewHolder(view: View, context: Context, onClick: (Teacher) -> (Unit)): RecyclerView.ViewHolder(view) {
 
     lateinit var popupMenu: PopupMenu
     val context = context
+    val onClick = onClick
 
     fun bind(teacher: Teacher) {
         itemView.item_teacher_name.text = teacher.name
         itemView.item_teacher_position.text = teacher.position
 
-        popupMenu = PopupMenu(context, itemView.item_teacher_overflow)
+        /*popupMenu = PopupMenu(context, itemView.item_teacher_overflow)
         popupMenu.menuInflater.inflate(R.menu.menu_teacher_overflow, popupMenu.menu)
         popupMenu.setOnMenuItemClickListener {
             when(it.itemId) {
@@ -55,6 +56,9 @@ class TeacherViewHolder(view: View, context: Context): RecyclerView.ViewHolder(v
 
         itemView.item_teacher_overflow.setOnClickListener {
             popupMenu.show()
+        }*/
+        itemView.setOnClickListener {
+            onClick(teacher)
         }
     }
 
