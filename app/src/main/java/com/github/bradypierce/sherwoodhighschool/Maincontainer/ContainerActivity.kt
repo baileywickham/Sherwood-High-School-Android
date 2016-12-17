@@ -33,11 +33,4 @@ class ContainerActivity : AppCompatActivity() {
         }
     }
 
-    fun openCustomTab(url: String) {
-        var builder = CustomTabsIntent.Builder()
-        builder.setToolbarColor(R.color.colorPrimary)
-        var customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(this, Uri.parse(url))
-    }
-
 }
